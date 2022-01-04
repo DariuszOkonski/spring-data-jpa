@@ -15,10 +15,38 @@ public class Student {
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
     )
+    @Column(
+            name = "id",
+            updatable = false
+    )
     private Long id;
+
+    @Column(
+            name = "first_name",
+            nullable = false,
+            columnDefinition = "Text"
+    )
     private String firstName;
+
+    @Column(
+            name = "last_name",
+            nullable = false,
+            columnDefinition = "Text"
+    )
     private String lastName;
+
+    @Column(
+            name = "email",
+            nullable = false,
+            columnDefinition = "Text",
+            unique = true
+    )
     private String email;
+
+    @Column(
+            name = "age",
+            nullable = false
+    )
     private Integer age;
 
     public Student(Long id,
