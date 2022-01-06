@@ -31,39 +31,52 @@ public class Application {
                     21
             );
 
-            System.out.println("==> Adding maria and ahmed");
+//            System.out.println("==> Adding maria and ahmed");
             studentRepository.saveAll(List.of(maria, ahmed));
+//
+//            System.out.println("===================================");
+//
+//            System.out.println("==> Number of students");
+//            System.out.println(studentRepository.count());
+//
+//            studentRepository.findById(2L)
+//                    .ifPresentOrElse(
+//                            System.out::println,
+//                            () -> {
+//                                System.out.println("Student with id 2 not found");
+//                            });
+//
+//
+//            studentRepository.findById(3L)
+//                    .ifPresentOrElse(
+//                            System.out::println,
+//                            () -> {
+//                                System.out.println("Student with id 3 not found");
+//                            }
+//                    );
+//
+//            System.out.println("==> Select all students");
+//            List<Student> students = studentRepository.findAll();
+//            students.forEach(System.out::println);
+//
+//            System.out.println("==> Delete maria");
+//            studentRepository.deleteById(1L);
+//
+//            System.out.println("==> Number of students");
+//            System.out.println(studentRepository.count());
 
-            System.out.println("===================================");
+            System.out.println("=======================================================");
 
-            System.out.println("==> Number of students");
-            System.out.println(studentRepository.count());
-
-            studentRepository.findById(2L)
+            studentRepository
+                    .findStudentByEmail("ahmed.ali@amigoscode.edu")
                     .ifPresentOrElse(
-                            System.out::println,
-                            () -> {
-                                System.out.println("Student with id 2 not found");
-                            });
-
-
-            studentRepository.findById(3L)
-                    .ifPresentOrElse(
-                            System.out::println,
-                            () -> {
-                                System.out.println("Student with id 3 not found");
-                            }
+                            student -> {
+                                System.out.println("Student: " + student);
+                            },
+                            () -> System.out.println("Student not found")
                     );
 
-            System.out.println("==> Select all students");
-            List<Student> students = studentRepository.findAll();
-            students.forEach(System.out::println);
 
-            System.out.println("==> Delete maria");
-            studentRepository.deleteById(1L);
-
-            System.out.println("==> Number of students");
-            System.out.println(studentRepository.count());
         };
     }
 
