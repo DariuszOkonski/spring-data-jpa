@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 
+// next -> native queries
+
 @SpringBootApplication
 public class Application {
 
