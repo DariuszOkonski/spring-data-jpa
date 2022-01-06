@@ -24,6 +24,12 @@ public class Application {
                     "maria.jones@amigoscode.edu",
                     21);
 
+            Student maria2 = new Student(
+                    "Maria",
+                    "Phillips",
+                    "maria2.jones@amigoscode.edu",
+                    25);
+
             Student ahmed = new Student(
                     "Ahmed",
                     "Ali",
@@ -31,8 +37,15 @@ public class Application {
                     21
             );
 
+            Student ahmedSecond = new Student(
+                    "Ahmed",
+                    "Johnston",
+                    "ahmed.johnston@gmail.com",
+                    35
+            );
+
 //            System.out.println("==> Adding maria and ahmed");
-            studentRepository.saveAll(List.of(maria, ahmed));
+            studentRepository.saveAll(List.of(maria, maria2, ahmed, ahmedSecond));
 //
 //            System.out.println("===================================");
 //
@@ -65,7 +78,7 @@ public class Application {
 //            System.out.println("==> Number of students");
 //            System.out.println(studentRepository.count());
 
-            System.out.println("=======================================================");
+            System.out.println("1 =======================================================");
 
             studentRepository
                     .findStudentByEmail("ahmed.ali@amigoscode.edu")
@@ -75,6 +88,24 @@ public class Application {
                             },
                             () -> System.out.println("Student not found")
                     );
+
+            System.out.println("2 =======================================================");
+            studentRepository
+                    .findStudentsByFirstName("Ahmed")
+                    .stream()
+                    .forEach(student -> {
+                        System.out.println(student);
+                    });
+
+            System.out.println("3 =======================================================");
+            studentRepository
+                    .findStudentsByFirstNameAndAge("Ahmed", 35)
+                    .forEach(System.out::println);
+
+            System.out.println("4 =======================================================");
+            studentRepository
+                    .findStudentsByFirstNameAndAgeIsGreaterThan("Maria", 20)
+                    .forEach(System.out::println);
 
 
         };
